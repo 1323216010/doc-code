@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/b",
+            "destination": "https://cube.yan-ui.asia/"
+        },
+        {
+            "source": "/b1",
+            "destination": "http://139.9.92.208:88/"
+        },
+        {
+            "source": "/g1",
+            "destination": "https://www.google.com/search?igu=1&q=北京时间"
+        }
+    ]
+}

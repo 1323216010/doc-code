@@ -1,0 +1,714 @@
+# This code-samples file is used by the Meilisearch documentation
+# Every example written here will be automatically fetched by
+# the documentation on build
+# You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
+---
+get_one_index_1: |-
+  client.get_index('movies')
+list_all_indexes_1: |-
+  client.get_indexes({'limit': 3})
+create_an_index_1: |-
+  client.create_index('movies', {'primaryKey': 'id'})
+update_an_index_1: |-
+  client.index('movies').update(primary_key='id')
+delete_an_index_1: |-
+  client.delete_index('movies')
+  // OR
+  client.index('movies').delete()
+swap_indexes_1: |-
+  client.swap_indexes([{'indexes': ['indexA', 'indexB']}, {'indexes': ['indexX', 'indexY']}])
+get_one_document_1: |-
+  client.index('movies').get_document(25684, {
+    'fields': ['id', 'title', 'poster', 'release_date']
+  })
+get_documents_1: |-
+  client.index('movies').get_documents({'limit':2})
+add_or_replace_documents_1: |-
+  client.index('movies').add_documents([{
+    'id': 287947,
+    'title': 'Shazam',
+    'poster': 'https://image.tmdb.org/t/p/w1280/xnopI5Xtky18MPhK40cZAGAOVeV.jpg',
+    'overview': 'A boy is given the ability to become an adult superhero in times of need with a single magic word.',
+    'release_date': '2019-03-23'
+  }])
+add_or_update_documents_1: |-
+  client.index('movies').update_documents([{
+      'id': 287947,
+      'title': 'Shazam ⚡️',
+      'genres': 'comedy'
+  }])
+delete_all_documents_1: |-
+  client.index('movies').delete_all_documents()
+delete_one_document_1: |-
+  client.index('movies').delete_document(25684)
+delete_documents_1: |-
+  client.index('movies').delete_documents([23488, 153738, 437035, 363869])
+search_post_1: |-
+  client.index('movies').search('American ninja')
+get_all_tasks_1: |-
+  client.get_tasks()
+get_task_1: |-
+  client.get_task(1)
+delete_tasks_1: |-
+  client.delete_tasks({'uids': ['1', '2']})
+cancel_tasks_1: |-
+  client.cancel_tasks({'uids': ['1', '2']})
+get_one_key_1: |-
+  client.get_key('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
+get_all_keys_1: |-
+  client.get_keys({'limit': 3})
+create_a_key_1: |-
+  client.create_key(options={
+    'description': 'Add documents: Products API key',
+    'actions': ['documents.add'],
+    'indexes': ['products'],
+    'expiresAt': '2042-04-02T00:42:42Z'
+  })
+update_a_key_1: |-
+  client.update_key(key_or_uid='6062abda-a5aa-4414-ac91-ecd7944c0f8d',
+    options={
+      'name': 'Products/Reviews API key',
+      'description': 'Manage documents: Products/Reviews API key'
+  })
+delete_a_key_1: |-
+  client.delete_key('6062abda-a5aa-4414-ac91-ecd7944c0f8d')
+get_settings_1: |-
+  client.index('movies').get_settings()
+update_settings_1: |-
+  client.index('movies').update_settings({
+    'rankingRules': [
+      'words',
+      'typo',
+      'proximity',
+      'attribute',
+      'sort',
+      'exactness',
+      'release_date:desc',
+      'rank:desc'
+    ],
+    'distinctAttribute': 'movie_id',
+    'searchableAttributes': [
+      'title',
+      'overview',
+      'genres'
+    ],
+    'displayedAttributes': [
+      'title',
+      'overview',
+      'genres',
+      'release_date'
+    ],
+    'sortableAttributes': [
+      'title',
+      'release_date'
+    ],
+    'stopWords': [
+      'the',
+      'a',
+      'an'
+    ],
+    'synonyms': {
+      'wolverine': ['xmen', 'logan'],
+      'logan': ['wolverine']
+    },
+    'typoTolerance': {
+      'minWordSizeForTypos': {
+          'oneTypo': 8,
+          'twoTypos': 10
+      },
+      'disableOnAttributes': ['title']
+    },
+    'pagination': {
+      'maxTotalHits': 5000
+    },
+    'faceting': {
+      'maxValuesPerFacet': 200
+    }
+  })
+reset_settings_1: |-
+  client.index('movies').reset_settings()
+get_synonyms_1: |-
+  client.index('movies').get_synonyms()
+update_synonyms_1: |-
+  client.index('movies').update_synonyms({
+    'wolverine': ['xmen', 'logan'],
+    'logan': ['wolverine', 'xmen'],
+    'wow': ['world of warcraft']
+  })
+reset_synonyms_1: |-
+  client.index('movies').reset_synonyms()
+get_stop_words_1: |-
+  client.index('movies').get_stop_words()
+update_stop_words_1: |-
+  client.index('movies').update_stop_words(['of', 'the', 'to'])
+reset_stop_words_1: |-
+  client.index('movies').reset_stop_words()
+get_ranking_rules_1: |-
+  client.index('movies').get_ranking_rules()
+update_ranking_rules_1: |-
+  client.index('movies').update_ranking_rules([
+      'words',
+      'typo',
+      'proximity',
+      'attribute',
+      'sort',
+      'exactness',
+      'release_date:asc',
+      'rank:desc'
+  ])
+reset_ranking_rules_1: |-
+  client.index('movies').reset_ranking_rules()
+get_distinct_attribute_1: |-
+  client.index('shoes').get_distinct_attribute()
+update_distinct_attribute_1: |-
+  client.index('shoes').update_distinct_attribute('skuid')
+reset_distinct_attribute_1: |-
+  client.index('shoes').reset_distinct_attribute()
+get_filterable_attributes_1: |-
+  client.index('movies').get_filterable_attributes()
+update_filterable_attributes_1: |-
+  client.index('movies').update_filterable_attributes([
+    'genres',
+    'director'
+  ])
+reset_filterable_attributes_1: |-
+  client.index('movies').reset_filterable_attributes()
+get_searchable_attributes_1: |-
+  client.index('movies').get_searchable_attributes()
+update_searchable_attributes_1: |-
+  client.index('movies').update_searchable_attributes([
+      'title',
+      'overview',
+      'genres'
+  ])
+reset_searchable_attributes_1: |-
+  client.index('movies').reset_searchable_attributes()
+get_displayed_attributes_1: |-
+  client.index('movies').get_displayed_attributes()
+update_displayed_attributes_1: |-
+  client.index('movies').update_displayed_attributes([
+      'title',
+      'overview',
+      'genres',
+      'release_date'
+  ])
+reset_displayed_attributes_1: |-
+  client.index('movies').reset_displayed_attributes()
+getting_started_typo_tolerance: |-
+  client.index('movies').update_typo_tolerance({
+    'minWordSizeForTypos': {
+      'oneTypo': 4
+    }
+  })
+get_typo_tolerance_1:
+  client.index('books').get_typo_tolerance()
+update_typo_tolerance_1: |-
+  client.index('books').update_typo_tolerance({
+    'minWordSizeForTypos': {
+        'oneTypo': 4,
+        'twoTypos': 10
+      },
+      'disableOnAttributes': [
+         'title'
+      ]
+  })
+reset_typo_tolerance_1: |-
+  client.index('books').reset_typo_tolerance()
+get_sortable_attributes_1: |-
+  client.index('books').get_sortable_attributes()
+update_sortable_attributes_1: |-
+  client.index('books').update_sortable_attributes([
+    'price',
+    'author'
+  ])
+reset_sortable_attributes_1: |-
+  client.index('books').reset_sortable_attributes()
+get_index_stats_1: |-
+  client.index('movies').get_stats()
+get_indexes_stats_1: |-
+  client.get_all_stats()
+get_health_1: |-
+  client.health()
+get_version_1: |-
+  client.get_version()
+distinct_attribute_guide_1: |-
+  client.index('jackets').update_settings({'distinctAttribute': 'product_id'})
+field_properties_guide_searchable_1: |-
+  client.index('movies').update_settings({
+    'searchableAttributes': [
+        'title',
+        'overview',
+        'genres'
+  ]})
+field_properties_guide_displayed_1: |-
+  client.index('movies').update_settings({
+    'displayedAttributes': [
+        'title',
+        'overview',
+        'genres',
+        'release_date'
+  ]})
+filtering_guide_1: |-
+  client.index('movies').search('Avengers', {
+    'filter': 'release_date > 795484800'
+  })
+filtering_guide_2: |-
+  client.index('movies').search('Batman', {
+    'filter': 'release_date > 795484800 AND (director = "Tim Burton" OR director = "Christopher Nolan")'
+  })
+filtering_guide_3: |-
+  client.index('movies').search('Planet of the Apes', {
+    'filter': 'rating >= 3 AND (NOT director = "Tim Burton")'
+  })
+search_parameter_guide_query_1: |-
+  client.index('movies').search('shifu')
+search_parameter_guide_offset_1: |-
+  client.index('movies').search('shifu', {
+    'offset': 1
+  })
+search_parameter_guide_limit_1: |-
+  client.index('movies').search('shifu', {
+    'limit': 2
+  })
+search_parameter_guide_retrieve_1: |-
+  client.index('movies').search('shifu', {
+    'attributesToRetrieve': ['overview', 'title']
+  })
+search_parameter_guide_crop_1: |-
+  client.index('movies').search('shifu', {
+    'attributesToCrop': ['overview'],
+    'cropLength': 5
+  })
+search_parameter_guide_crop_marker_1: |-
+  client.index('movies').search('shifu', {
+    'attributesToCrop': ['overview'],
+    'cropMarker': '[…]'
+  })
+search_parameter_guide_matching_strategy_1: |-
+  client.index('movies').search('big fat liar', {
+    'matchingStrategy': 'last'
+  })
+search_parameter_guide_matching_strategy_2: |-
+  client.index('movies').search('big fat liar', {
+    'matchingStrategy': 'all'
+  })
+search_parameter_guide_highlight_1: |-
+  client.index('movies').search('winter feast', {
+    'attributesToHighlight': ['overview']
+  })
+search_parameter_guide_highlight_tag_1: |-
+  client.index('movies').search('winter feast', {
+    'attributesToHighlight': ['overview'],
+    'highlightPreTag': '<span class="highlight">',
+    'highlightPostTag': '</span>'
+  })
+search_parameter_guide_show_matches_position_1: |-
+  client.index('movies').search('winter feast', {
+    'showMatchesPosition': True
+  })
+search_parameter_guide_hitsperpage_1: |-
+  client.index('movies').search('', {'hitsPerPage': 15})
+search_parameter_guide_page_1: |-
+  client.index('movies').search('', {'page': 2})
+settings_guide_synonyms_1: |-
+  client.index('tops').update_settings({
+    'synonyms': {
+      sweater: ['jumper'],
+      jumper: ['sweater']
+    },
+  })
+settings_guide_stop_words_1: |-
+  client.index('movies').update_settings({
+    'stopWords': [
+        'the',
+        'a',
+        'an'
+    ],
+  })
+settings_guide_ranking_rules_1: |-
+  client.index('movies').update_settings({
+    'rankingRules': [
+        'words',
+        'typo',
+        'proximity',
+        'attribute',
+        'sort',
+        'exactness',
+        'release_date:asc',
+        'rank:desc'
+    ]
+  })
+settings_guide_distinct_1: |-
+  client.index('jackets').update_settings({
+    'distinctAttribute': 'product_id'
+  })
+settings_guide_searchable_1: |-
+  client.index('movies').update_settings({
+    'searchableAttributes': [
+      'title',
+      'overview',
+      'genres'
+    ]
+  })
+settings_guide_displayed_1: |-
+  client.index('movies').update_settings({
+    'displayedAttributes': [
+      'title',
+      'overview',
+      'genres',
+      'release_date'
+    ]
+  })
+settings_guide_sortable_1: |-
+  client.index('books').update_settings({
+    'sortableAttributes': [
+      'price',
+      'author'
+    ]
+  })
+settings_guide_typo_tolerance_1: |-
+  client.index('movies').update_typo_tolerance({
+    'minWordSizeForTypos': {
+      'twoTypos': 12
+    },
+    'disableOnAttributes': [
+      'title'
+    ]
+  })
+typo_tolerance_guide_1: |-
+  client.index('movies').update_typo_tolerance({
+    'enabled': False
+  })
+typo_tolerance_guide_2: |-
+  client.index('movies').update_typo_tolerance({
+    'disableOnAttributes': ['title']
+  })
+typo_tolerance_guide_3: |-
+  client.index('movies').update_typo_tolerance({
+    'disableOnWords': ['shrek']
+  })
+typo_tolerance_guide_4: |-
+  client.index('movies').update_typo_tolerance({
+    'minWordSizeForTypos': {
+      'oneTypo': 4,
+      'twoTypos': 10
+    }
+  })
+add_movies_json_1: |-
+  import json
+
+  json_file = open('movies.json')
+  movies = json.load(json_file)
+  client.index('movies').add_documents(movies)
+landing_getting_started_1: |-
+  client = meilisearch.Client('http://localhost:7700', 'masterKey')
+
+  client.index('movies').add_documents([
+    { 'id': 1, 'title': 'Carol' },
+    { 'id': 2, 'title': 'Wonder Woman' },
+    { 'id': 3, 'title': 'Life of Pi' },
+    { 'id': 4, 'title': 'Mad Max: Fury Road' },
+    { 'id': 5, 'title': 'Moana' },
+    { 'id': 6, 'title': 'Philadelphia'}
+  ])
+documents_guide_add_movie_1: |-
+  client.index('movies').add_documents([{
+    'movie_id': '123sq178',
+    'title': 'Amélie Poulain'
+  }])
+getting_started_check_task_status: |-
+  client.get_task(0)
+code_md: |-
+  ```bash
+  pip3 install meilisearch
+  ```
+
+  ```python
+  import meilisearch
+  import json
+
+  client = meilisearch.Client('http://localhost:7700')
+
+  json_file = open('movies.json')
+  movies = json.load(json_file)
+  client.index('movies').add_documents(movies)
+  ```
+
+  [About this SDK](https://github.com/meilisearch/meilisearch-python/)
+getting_started_search_md: |-
+  ```python
+  client.index('movies').search('botman')
+  ```
+
+  [About this SDK](https://github.com/meilisearch/meilisearch-python/)
+getting_started_add_meteorites: |-
+  import json
+
+  json_file = open('meteorites.json')
+  meteorites = json.load(json_file)
+  client.index('meteorites').add_documents(meteorites)
+getting_started_update_ranking_rules: |-
+  client.index('movies').update_ranking_rules([
+      'exactness',
+      'words',
+      'typo',
+      'proximity',
+      'attribute',
+      'sort',
+      'release_date:asc',
+      'rank:desc'
+  ])
+getting_started_update_displayed_attributes: |-
+  client.index('movies').update_displayed_attributes([
+      'title',
+      'overview',
+      'poster'
+  ])
+getting_started_update_searchable_attributes: |-
+  client.index('movies').update_searchable_attributes([
+      'title'
+  ])
+getting_started_update_stop_words: |-
+  client.index('movies').update_stop_words(['the'])
+getting_started_synonyms: |-
+  client.index('movies').update_synonyms({
+    'winnie': ['piglet'],
+    'piglet': ['winnie']
+  })
+getting_started_filtering: |-
+  client.index('meteorites').search('', {
+    'filter': 'mass < 200'
+  })
+getting_started_geo_radius: |-
+  client.index('meteorites').search('', {
+    'filter': '_geoRadius(46.9480, 7.4474, 210000)'
+  })
+getting_started_geo_point: |-
+  client.index('meteorites').search('', {
+    'sort': ['_geoPoint(48.8583701,2.2922926):asc']
+  })
+getting_started_sorting: |-
+  client.index('meteorites').search('', {
+    'filter': 'mass < 200',
+    'sort': ['mass:asc']
+  })
+getting_started_configure_settings: |-
+  client.index('meteorites').update_settings({
+    'filterableAttributes': [
+        'mass',
+        '_geo'
+    ],
+    'sortableAttributes': [
+        'mass',
+        '_geo'
+    ]
+  })
+getting_started_communicating_with_a_protected_instance: |-
+  client = Client('http://localhost:7700', 'apiKey')
+  client.index('movies').search()
+getting_started_faceting: |-
+  client.index('movies').update_faceting_settings({'maxValuesPerFacet': 2})
+getting_started_pagination: |-
+  client.index('movies').update_pagination_settings({'maxTotalHits': 500})
+faceted_search_update_settings_1: |-
+  client.index('movies').update_filterable_attributes([
+      'director',
+      'genres',
+  ])
+faceted_search_filter_1: |-
+  client.index('movies').search('thriller', {
+    'filter': [['genres = Horror', 'genres = Mystery'], 'director = "Jordan Peele"']
+  })
+faceted_search_facets_1: |-
+  client.index('movies').search('Batman', {
+    'facets': ['genres']
+  })
+faceted_search_walkthrough_filter_1: |-
+  client.index('movies').search('thriller', {
+    'filter': [['genres = Horror', 'genres = Mystery'], 'director = "Jordan Peele"']
+  })
+post_dump_1: |-
+  client.create_dump()
+phrase_search_1: |-
+  client.index('movies').search('"african american" horror')
+sorting_guide_update_sortable_attributes_1: |-
+  client.index('books').update_sortable_attributes([
+    'author',
+    'price'
+  ])
+sorting_guide_update_ranking_rules_1: |-
+  client.index('books').update_ranking_rules([
+      'words',
+      'sort',
+      'typo',
+      'proximity',
+      'attribute',
+      'exactness'
+  ])
+sorting_guide_sort_parameter_1: |-
+  client.index('books').search('science fiction', {
+    'sort': ['price:asc']
+  })
+sorting_guide_sort_parameter_2: |-
+  client.index('books').search('butler', {
+    'sort': ['author:desc']
+  })
+search_parameter_guide_sort_1: |-
+  client.index('books').search('science fiction', {
+    'sort': ['price:asc']
+  })
+geosearch_guide_filter_settings_1: |-
+  client.index('restaurants').update_filterable_attributes([
+    '_geo'
+  ])
+geosearch_guide_filter_usage_1: |-
+  client.index('restaurants').search('', {
+    'filter': '_geoRadius(45.472735, 9.184019, 2000)'
+  })
+geosearch_guide_filter_usage_2: |-
+  client.index('restaurants').search('', {
+    'filter': '_geoRadius(45.472735, 9.184019, 2000) AND type = pizza'
+  })
+geosearch_guide_sort_settings_1: |-
+  client.index('restaurants').update_sortable_attributes([
+    '_geo'
+  ])
+geosearch_guide_sort_usage_1: |-
+  client.index('restaurants').search('', {
+    'sort': ['_geoPoint(48.8561446,2.2978204):asc']
+  })
+geosearch_guide_sort_usage_2: |-
+  client.index('restaurants').search('', {
+    'sort': ['_geoPoint(48.8561446,2.2978204):asc', 'rating:desc']
+  })
+primary_field_guide_update_document_primary_key: |-
+  client.index('books').update(primary_key='title')
+primary_field_guide_create_index_primary_key: |-
+  client.create_index('books', {'primaryKey': 'reference_number'})
+primary_field_guide_add_document_primary_key: |-
+  client.index('books').add_documents([{
+    'reference_number': 287947,
+    'title': 'Diary of a Wimpy Kid',
+    'author': 'Jeff Kinney',
+    'genres': ['comedy', 'humor'],
+    'price': 5.00
+  }], 'reference_number')
+security_guide_search_key_1: |-
+  client = Client('http://localhost:7700', 'apiKey')
+  client.index('patient_medical_records').search()
+security_guide_update_key_1: |-
+  client = Client('http://localhost:7700', 'masterKey')
+  client.update_key(key_or_uid='74c9c733-3368-4738-bbe5-1d18a5fecb37', options={
+    'description': 'Default Search API Key'
+  })
+security_guide_create_key_1: |-
+  client = Client('http://localhost:7700', 'masterKey')
+    client.create_key(options={
+    'description': 'Search patient records key',
+    'actions': ['search'],
+    'indexes': ['patient_medical_records'],
+    'expiresAt': '2023-01-01T00:00:00Z'
+  })
+security_guide_list_keys_1: |-
+  client = Client('http://localhost:7700', 'masterKey')
+  client.get_keys()
+security_guide_delete_key_1: |-
+  client = Client('http://localhost:7700', 'masterKey')
+  client.delete_key('ac5cd97d-5a4b-4226-a868-2d0eb6d197ab')
+authorization_header_1: |-
+  client = Client('http://localhost:7700', 'masterKey')
+  client.get_keys()
+tenant_token_guide_generate_sdk_1: |-
+  uid = '85c3c2f9-bdd6-41f1-abd8-11fcf80e0f76';
+  api_key = 'B5KdX2MY2jV6EXfUs6scSfmC...'
+  expires_at = datetime(2025, 12, 20)
+  search_rules = {
+    'patient_medical_records': {
+      'filter': 'user_id = 1'
+    }
+  }
+  token = client.generate_tenant_token(api_key_uid=uid, search_rules=search_rules, api_key=api_key, expires_at=expires_at)
+tenant_token_guide_search_sdk_1: |-
+  front_end_client = Client('http://localhost:7700', token)
+  front_end_client.index('patient_medical_records').search('blood test')
+get_all_tasks_paginating_1: |-
+  client.get_tasks({
+    'limit': 2,
+    'from': 10
+  })
+get_all_tasks_paginating_2: |-
+  client.get_tasks({
+    'limit': 2,
+    'from': 8
+  })
+get_pagination_settings_1: |-
+update_pagination_settings_1: |-
+  client.index('books').update_settings({
+    'pagination': {
+      'maxTotalHits': 100
+    }
+  })
+reset_pagination_settings_1: |-
+get_faceting_settings_1: |-
+update_faceting_settings_1: |-
+  client.index('books').update_settings({
+    'faceting': {
+      'maxValuesPerFacet': 2
+    }
+  })
+reset_faceting_settings_1: |-
+settings_guide_faceting_1: |-
+  client.index('movies').update_settings({
+    'faceting': {
+      'maxValuesPerFacet': 5
+    }
+  })
+settings_guide_pagination_1: |-
+  client.index('movies').update_settings({
+    'pagination': {
+      'maxTotalHits': 50
+    }
+  })
+synonyms_guide_1: |-
+  client.index('movies').update_synonyms({
+    'great': ['fantastic'],
+    'fantastic': ['great']
+  })
+async_guide_filter_by_date_1: |-
+  client.get_tasks({'afterEnqueuedAt': '2020-10-11T11:49:53.000Z'})
+async_guide_multiple_filters_1: |-
+  client.get_tasks(
+    {
+        'indexUids': 'movies',
+        'types': ['documentAdditionOrUpdate', 'documentDeletion'],
+        'statuses': ['processing'],
+    }
+  )
+async_guide_filter_by_ids_1: |-
+  client.get_tasks({'uids': ['5', '10', '13']})
+async_guide_filter_by_statuses_1: |-
+  client.get_tasks({'statuses': ['failed', 'canceled']})
+async_guide_filter_by_types_1: |-
+  client.get_tasks({'types': ['dumpCreation', 'indexSwap']})
+async_guide_filter_by_index_uids_1: |-
+  client.get_tasks({'indexUids': ['movies']})
+async_guide_canceled_by_1: |-
+  client.get_tasks({'canceledBy': ['9', '15']})
+date_guide_index_1: |-
+  import json
+
+  json_file = open('./games.json')
+  games = json.load(json_file)
+  client.index('games').add_documents(games)
+date_guide_filterable_attributes_1: |-
+  client.index('games').update_filterable_attributes(['release_timestamp'])
+date_guide_filter_1: |-
+  client.index('games').search('', {
+    'filter': 'release_timestamp >= 1514761200 AND release_timestamp < 1672527600'
+  })
+date_guide_sortable_attributes_1: |-
+  client.index('games').update_sortable_attributes(['release_timestamp'])
+date_guide_sort_1: |-
+  client.index('games').search('', {
+    'sort': ['release_timestamp:desc']
+  })
