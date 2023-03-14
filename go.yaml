@@ -11,32 +11,21 @@ code_md: |-
   ```go
   package main
 
-  import (
-    "os"
-    "encoding/json"
-    "io"
-
-    "github.com/meilisearch/meilisearch-go"
-  )
+  import "fmt"
 
   func main() {
-    client := meilisearch.NewClient(meilisearch.ClientConfig{
-      Host: "http://localhost:7700",
-    })
-
-    jsonFile, _ := os.Open("movies.json")
-    defer jsonFile.Close()
-
-    byteValue, _ := io.ReadAll(jsonFile)
-    var movies []map[string]interface{}
-    json.Unmarshal(byteValue, &movies)
-
-    _, err := client.Index("movies").AddDocuments(movies)
-    if err != nil {
-        panic(err)
-    }
+    fmt.Println(charSum("golang", "g"))
   }
 
+  func charSum(str string, s string) int {
+    sum := 0;
+    for i := 0; i < len(str); i++ {
+        if(str[i] == s[0]) {
+          sum++;
+        }
+    }
+    return sum
+  }
   ```
 
   [About this SDK](https://github.com/meilisearch/meilisearch-go/)
