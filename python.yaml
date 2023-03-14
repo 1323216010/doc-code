@@ -3,8 +3,7 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
-char_sum: |-
-  ```python
+char_sum_1_1: |-
   def charSum(str, s):
     sum = 0
     for i in range(len(str)):
@@ -13,7 +12,6 @@ char_sum: |-
     return sum
 
   print(charSum('python', 'p'))
-  ```
 get_one_index_1: |-
   client.get_index('movies')
 list_all_indexes_1: |-

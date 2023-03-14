@@ -3,8 +3,7 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
-char_sum: |-
-  ```javascript
+char_sum_1: |-
   function charSum(str, ch) {
     let sum = 0;
     for(let i = 0; i < str.length; i++) {
@@ -15,7 +14,6 @@ char_sum: |-
     return sum;
   }
   console.log(charSum('javascript', 'a'))
-  ```
 synonyms_guide_1: |-
   client.index('movies').updateSynonyms({
     "great": ["fantastic"],

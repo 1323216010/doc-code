@@ -3,8 +3,7 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
-char_sum: |-
-  ```go
+char_sum_1: |-
   package main
 
   import "fmt"
@@ -22,7 +21,6 @@ char_sum: |-
     }
     return sum
   }
-  ```
 get_one_index_1: |-
   client.GetIndex("movies")
 list_all_indexes_1: |-

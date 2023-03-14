@@ -3,8 +3,7 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
-char_sum: |-  
-  ```java
+char_sum_1: |-  
   public static int charSum(String str, char ch) {
       char[] chars = str.toCharArray();
       int sum = 0;
@@ -15,7 +14,6 @@ char_sum: |-
       }
       return sum;
   }
-  ```
 get_one_index_1: |-
   client.getIndex("movies");
 list_all_indexes_1: |-
