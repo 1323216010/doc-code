@@ -4,22 +4,16 @@
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
 code_md: |-
-  ```bash
-  pip3 install meilisearch
-  ```
-
   ```python
-  import meilisearch
-  import json
+  def charSum(str, s):
+    sum = 0
+    for i in range(len(str)):
+            if str[i] == 's':
+                sum = sum + 1
+    return sum
 
-  client = meilisearch.Client('http://localhost:7700')
-
-  json_file = open('movies.json')
-  movies = json.load(json_file)
-  client.index('movies').add_documents(movies)
+  print(charSum('python', 'p'))
   ```
-
-  [About this SDK](https://github.com/meilisearch/meilisearch-python/)
 get_one_index_1: |-
   client.get_index('movies')
 list_all_indexes_1: |-
