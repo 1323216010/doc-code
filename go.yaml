@@ -4,10 +4,6 @@
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
 code_md: |-
-  ```bash
-  go get -u github.com/meilisearch/meilisearch-go
-  ```
-
   ```go
   package main
 
@@ -27,8 +23,6 @@ code_md: |-
     return sum
   }
   ```
-
-  [About this SDK](https://github.com/meilisearch/meilisearch-go/)
 get_one_index_1: |-
   client.GetIndex("movies")
 list_all_indexes_1: |-
