@@ -3,6 +3,19 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
+code_md: |-  
+  ```java
+  public static int charSum(String str, char ch) {
+      char[] chars = str.toCharArray();
+      int sum = 0;
+      for (int i = 0; i < chars.length; i++) {
+          if (chars[i] == ch) {
+              sum++;
+          }
+      }
+      return sum;
+  }
+  ```
 get_one_index_1: |-
   client.getIndex("movies");
 list_all_indexes_1: |-
@@ -487,19 +500,6 @@ documents_guide_add_movie_1: |-
     + "\"title\": \"Amelie Poulain\""
     + "}]"
   );
-code_md: |-  
-  ```java
-  public static int charSum(String str, char ch) {
-      char[] chars = str.toCharArray();
-      int sum = 0;
-      for (int i = 0; i < chars.length; i++) {
-          if (chars[i] == ch) {
-              sum++;
-          }
-      }
-      return sum;
-  }
-  ```
 getting_started_check_task_status: |-
   client.getTask(0);
 getting_started_search_md: |-

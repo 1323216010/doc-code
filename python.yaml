@@ -3,6 +3,23 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
+code_md: |-
+  ```bash
+  pip3 install meilisearch
+  ```
+
+  ```python
+  import meilisearch
+  import json
+
+  client = meilisearch.Client('http://localhost:7700')
+
+  json_file = open('movies.json')
+  movies = json.load(json_file)
+  client.index('movies').add_documents(movies)
+  ```
+
+  [About this SDK](https://github.com/meilisearch/meilisearch-python/)
 get_one_index_1: |-
   client.get_index('movies')
 list_all_indexes_1: |-
@@ -418,23 +435,6 @@ documents_guide_add_movie_1: |-
   }])
 getting_started_check_task_status: |-
   client.get_task(0)
-code_md: |-
-  ```bash
-  pip3 install meilisearch
-  ```
-
-  ```python
-  import meilisearch
-  import json
-
-  client = meilisearch.Client('http://localhost:7700')
-
-  json_file = open('movies.json')
-  movies = json.load(json_file)
-  client.index('movies').add_documents(movies)
-  ```
-
-  [About this SDK](https://github.com/meilisearch/meilisearch-python/)
 getting_started_search_md: |-
   ```python
   client.index('movies').search('botman')

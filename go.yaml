@@ -3,6 +3,43 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
+code_md: |-
+  ```bash
+  go get -u github.com/meilisearch/meilisearch-go
+  ```
+
+  ```go
+  package main
+
+  import (
+    "os"
+    "encoding/json"
+    "io"
+
+    "github.com/meilisearch/meilisearch-go"
+  )
+
+  func main() {
+    client := meilisearch.NewClient(meilisearch.ClientConfig{
+      Host: "http://localhost:7700",
+    })
+
+    jsonFile, _ := os.Open("movies.json")
+    defer jsonFile.Close()
+
+    byteValue, _ := io.ReadAll(jsonFile)
+    var movies []map[string]interface{}
+    json.Unmarshal(byteValue, &movies)
+
+    _, err := client.Index("movies").AddDocuments(movies)
+    if err != nil {
+        panic(err)
+    }
+  }
+
+  ```
+
+  [About this SDK](https://github.com/meilisearch/meilisearch-go/)
 get_one_index_1: |-
   client.GetIndex("movies")
 list_all_indexes_1: |-
@@ -544,43 +581,6 @@ documents_guide_add_movie_1: |-
   client.Index("movies").AddDocuments(documents)
 getting_started_check_task_status: |-
   client.GetTask(0)
-code_md: |-
-  ```bash
-  go get -u github.com/meilisearch/meilisearch-go
-  ```
-
-  ```go
-  package main
-
-  import (
-    "os"
-    "encoding/json"
-    "io"
-
-    "github.com/meilisearch/meilisearch-go"
-  )
-
-  func main() {
-    client := meilisearch.NewClient(meilisearch.ClientConfig{
-      Host: "http://localhost:7700",
-    })
-
-    jsonFile, _ := os.Open("movies.json")
-    defer jsonFile.Close()
-
-    byteValue, _ := io.ReadAll(jsonFile)
-    var movies []map[string]interface{}
-    json.Unmarshal(byteValue, &movies)
-
-    _, err := client.Index("movies").AddDocuments(movies)
-    if err != nil {
-        panic(err)
-    }
-  }
-
-  ```
-
-  [About this SDK](https://github.com/meilisearch/meilisearch-go/)
 getting_started_search_md: |-
   ```go
   client.Index("movies").Search("botman", &meilisearch.SearchRequest{})
