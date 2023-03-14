@@ -3,7 +3,7 @@
 # the documentation on build
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
-code_md: |-
+code_md1: |-
   ```javascript
   function charSum(str, ch) {
     let sum = 0;
