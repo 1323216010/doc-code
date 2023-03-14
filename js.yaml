@@ -446,6 +446,7 @@ primary_field_guide_add_document_primary_key: |-
     }
   ], { primaryKey: 'reference_number' })
 code_md: |-
+  ```javascript
   function charSum(str, ch) {
     let sum = 0;
     for(let i = 0; i < str.length; i++) {
@@ -456,6 +457,7 @@ code_md: |-
     return sum;
   }
   console.log(charSum('javascript', 'a'))
+  ```
 getting_started_search_md: |-
   ```js
   client.index('movies').search('botman').then((res) => console.log(res))
