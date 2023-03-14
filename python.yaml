@@ -4,6 +4,7 @@
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
 char_sum_md: |-
+  ```python
   def charSum(str, s):
     sum = 0
     for i in range(len(str)):
@@ -12,6 +13,7 @@ char_sum_md: |-
     return sum
 
   print(charSum('python', 'p'))
+  ```
 get_one_index_1: |-
   client.get_index('movies')
 list_all_indexes_1: |-

@@ -4,6 +4,7 @@
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
 char_sum_md: |-
+  ```javascript
   function charSum(str, ch) {
     let sum = 0;
     for(let i = 0; i < str.length; i++) {
@@ -14,6 +15,7 @@ char_sum_md: |-
     return sum;
   }
   console.log(charSum('javascript', 'a'))
+  ```
 synonyms_guide_1: |-
   client.index('movies').updateSynonyms({
     "great": ["fantastic"],

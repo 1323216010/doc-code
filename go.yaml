@@ -4,6 +4,7 @@
 # You can read more on https://github.com/meilisearch/documentation/tree/master/.vuepress/code-samples
 ---
 char_sum_md: |-
+  ```go
   package main
 
   import "fmt"
@@ -21,6 +22,7 @@ char_sum_md: |-
     }
     return sum
   }
+  ```
 get_one_index_1: |-
   client.GetIndex("movies")
 list_all_indexes_1: |-
