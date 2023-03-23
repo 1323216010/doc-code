@@ -24,12 +24,18 @@ char_sum_md: |-
   }
   ```
 slice_1: |-
-  arr := [5]int{1, 2, 3, 4, 5}
-  s := arr[1:3]
-  fmt.Println("length:", s[0:4])
-  fmt.Println("length:", s)
-  fmt.Println("length:", len(s))
-  fmt.Println("capacity:", cap(s))
+  package main
+
+  import "fmt"
+
+  func main() {
+    arr := [5]int{1, 2, 3, 4, 5}
+    s := arr[1:3]
+    fmt.Println("length:", s[0:4])
+    fmt.Println("length:", s)
+    fmt.Println("length:", len(s))
+    fmt.Println("capacity:", cap(s))
+  }
 get_one_index_1: |-
   client.GetIndex("movies")
 list_all_indexes_1: |-
