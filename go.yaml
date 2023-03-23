@@ -40,6 +40,11 @@ slice_1: |-
     // 获取下标3以后的数据（包括3）
     e := a[3:]
     // 长度和容量
+    fmt.Println(b)
+    fmt.Println(c)
+    fmt.Println(d)
+    fmt.Println(e)
+
     s := []int {2,3,5,7,11,13}
     fmt.Printf("长度%d 容量%d\n", len(s), cap(s))
 
